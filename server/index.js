@@ -1,24 +1,27 @@
 const express = require("express");
 const cors = require('cors');
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' })
 const app = express();
 app.use(cors());
+app.use(express.json());
 const NLPCloudClient = require('nlpcloud');
 const vision = require('@google-cloud/vision');
 
-app.get("/getdata", async (req, res) => {
+app.post("/getdata", upload.single('file'), async (req, res) => {
         // Creates a client
         const gClient = new vision.ImageAnnotatorClient({
             keyFilename: './apikey.json',
             apiEndpoint: 'us-vision.googleapis.com'
         })
-      
+        
+        // console.log(req);
         // Performs text detection on the image file
-        const [result] = await gClient.textDetection('./news.png');
+        const [result] = await gClient.textDetection(req.file.path);
         const labels = result.textAnnotations
     
         textArray = labels.map(label => label.description)
         text = textArray[0]
-    
     
         const client = new NLPCloudClient('bart-large-cnn','92618546913670c8dd7b61517096d4af64fca6d5')
         // Returns an Axios promise with the results.
