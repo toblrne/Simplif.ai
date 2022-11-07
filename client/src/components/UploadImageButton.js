@@ -1,11 +1,20 @@
-import React, { useRef } from "react";
+import React, { useState } from "react";
 import "../styles.css";
 import uploadIcon from "../images/uploadIcon.png";
 
-export default function UploadImageButton() {
+export default function UploadImageButton({ getUserInput }) {
+
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const changeHandler = (event) => {
+    getUserInput(event.target.files[0]);
+    setSelectedFile(event.target.files[0]);
+  }
+
+
   return (
     <div className="uploadButton">
-      <input type="file" id="actual_button" />
+      <input type="file" name="file" id="actual_button" onChange={(event) => changeHandler(event)}/>
       <label for="actual_button" className="uploadButton">
         <img src={uploadIcon} />
         <p>Select file from your computer</p>

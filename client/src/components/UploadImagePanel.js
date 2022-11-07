@@ -2,12 +2,12 @@ import React from "react";
 import "../styles.css";
 import UploadImageButton from "./UploadImageButton";
 
-export default function UploadImagePanel() {
-  return (
+export default function UploadImagePanel({ getUserInput }) {
+  return ( 
     <div className="panel">
       <h2>Upload your image</h2>
       <p>PNG & JPG files allowed</p>
-      <UploadImageButton />
+      <UploadImageButton getUserInput={getUserInput}/>
     </div>
   );
 }
