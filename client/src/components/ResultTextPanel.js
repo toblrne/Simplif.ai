@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "../styles.css";
+import "../resultTextStyles.css";
 
 export default function ResultText() {
   return (

@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap");
+
+.uploadButton {
+  position: inherit;
+  background-color: #ddecd2;
+  width: 500px;
+  height: 170px;
+  border-radius: 30px;
+  margin-left: 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.uploadButton > img {
+  height: 100px;
+  width: 100px;
+  margin-top: 15px;
+}
+
+.uploadButton > input {
+  font-family: "Rubik", sans-serif;
+  font-size: 15px;
+  font-weight: 550;
+  letter-spacing: 0em;
+  margin-left: 75px;
+}
+
+.uploadButton > p {
+  font-family: "Rubik", sans-serif;
+  font-size: 15px;
+  font-weight: 550;
+  letter-spacing: 0em;
+}
+
+.uploadButton:hover {
+  cursor: pointer;
+  background-color: #e4eedd;
+  transition: 0.2s;
+}
