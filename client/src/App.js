@@ -14,10 +14,6 @@ function App() {
   const [summary, setSummary] = useState("");
 
   useEffect(() => {
-    console.log(currentImage)
-  }, [currentImage]);
-
-  useEffect(() => {
     console.log(currentImage + "hi")
     const getSummary = (fullText) => {
       let data = new FormData();
@@ -31,6 +27,7 @@ function App() {
         }
       })
       .then(function(response) {
+        console.log('her'+ response.data)
         setSummary(response.data);
       })
       .catch(function(error) {
