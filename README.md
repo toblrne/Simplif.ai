@@ -22,10 +22,10 @@ The biggest challenge we ran into was that none of our team members knew anythin
 ## What we learned
 Back-end development (express, node.js)
 Working with google cloud vision and NLP
-
-## Technologies Used
-html, css, javascript, react.js, express, node.js, google cloud vision, nlp cloud summarizer api, figma
 Designing UX/UI for developer handoff
 
 ## What's next for Simplif.ai
 We want to implement more features such as being able to copy and paste text into our web app, being able to store and save files with an account, as well as creating a mobile app version to natively take photos of text.
+
+## Technologies Used
+html, css, javascript, react.js, express, node.js, google cloud vision, nlp cloud summarizer api, figma
