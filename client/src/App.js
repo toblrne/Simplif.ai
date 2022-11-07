@@ -47,7 +47,6 @@ function App() {
   const getUserImage = (img) => {
     setCurrentImage(img);
   }
-
   return (
     <div className="App">
       <UploadImagePanel getUserInput={getUserImage}/>
