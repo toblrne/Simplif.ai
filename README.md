@@ -1,4 +1,4 @@
-# hackcamp2022
+# Simplif.ai
 The Problem
 When reading school textbooks or news articles online, a major issue that arises is the unnecessary amount of text that is required to explain an extremely simple concept.
 
