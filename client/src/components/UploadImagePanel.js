@@ -3,6 +3,7 @@ import "../panelStyles.css";
 import UploadImageButton from "./UploadImageButton";
 
 export default function UploadImagePanel({ getUserInput }) {
+
   return ( 
     <div className="panel">
       <h2>Upload your image</h2>

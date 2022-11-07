@@ -29,9 +29,11 @@ app.post("/getdata", upload.single('file'), async (req, res) => {
         // In case of failure, you can retrieve the status code in `err.response.status` 
         // and the error message in `err.response.data.detail`.
         client.summarization(text).then(function (response) {
-        console.log(response.data);
+            text = response.data;
+            console.log("hasdfasd");
         })
         .catch(function (err) {
+            console.log('hiasdfasd')
             console.error(err.response.status);
             console.error(err.response.data.detail);
         }) 
@@ -39,4 +41,3 @@ app.post("/getdata", upload.single('file'), async (req, res) => {
 })
 
 app.listen(5000, '127.0.0.01', () => console.log('Server Running!'));
-

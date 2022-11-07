@@ -1,0 +1,206 @@
+#Key tasks: load all values, compute average of single student, write a loop to compute average of all students, bubble sort, and then find median
+
+#setup
+ld $s, r0           #r0 = &s
+ld (r0), r0         #r0 = s
+ld $n, r1           #r1 = &n
+ld (r1), r1         #r1 = n (number of students)
+
+#for loop setup (computing average for all students)
+ld $0, r2           # i' (incrementing value) int i = 0...
+
+loop: 
+mov r2, r7          #r7 is constant 
+not r7
+inc r7
+add r1, r7
+bgt r7, loopbody
+fail:
+br bubblesort
+loopbody:
+ld 4(r0), r7        #r7 = sum of grades
+ld 8(r0), r6        #r6 = grades[1]
+add r6, r7          #r7 = grades[0] + grades[1]
+ld 12(r0), r6       #r6 = grades[2]
+add r6, r7          #r7 = grades[0] + grades[1] + grades[2]
+ld 16(r0), r6       #r6 = grades[2]
+add r6, r7          #r7 = grades[0] + grades[1] + grades[2] + grades[3]
+shr $2, r7          #r7 = r7 / 4 to get average
+st r7, 20(r0)       #store average
+
+#increment r0 address to be the address of the next student
+ld $24, r7
+add r7, r0          #r0 = r0 + 6 (pointer pointing at student is incremeneted to next student)
+inc r2              # i++
+br loop
+
+#bubble sort
+
+#need to swap consecutive students by swapping one address at a time and storing in register
+#void sort (int* a, int n) {
+#  for (int i=n-1; i>0; i--)
+#    for (int j=1; j<=i; j++)
+#      if (a[j-1] > a[j]) {
+#        int t = a[j];
+#        a[j] = a[j-1];
+#        a[j-1] = t;
+#      }
+#}
+
+#outer for loop to loop over all elements
+
+#outer setup
+bubblesort:
+ld $s, r0
+ld (r0), r0             #r0 is used to increment student pointer inside
+mov r0, r1              #r0 is used to increment student pointer outside
+ld $n, r2
+ld (r2), r2
+ld $-1, r3
+add r3, r2              #r2 is i', incremental value
+
+oloop: 
+ld $1, r3               #r3 is j'
+bgt r2, oloopbody        #is i > 0? (decremented in ifail)
+ofail:                  #if outer fails, that means the bubble sort has ended
+br findmedian
+oloopbody:
+mov r1, r0              # inner pointer = outer pointer to 
+br iloop
+
+# need to decremnt i somehow? maybe do it in the second loop 
+
+#inner loop
+iloop:
+mov r2, r7              #r7 = i
+mov r3, r6              #r6 = j
+not r6
+inc r6
+add r6, r7              #r7 = i + -j
+bgt r7, iloopbody       # 0 < i + -j, go to body 
+beq r7, iloopbody       # 0 = i + -j, go to body  
+ifail:
+dec r2                  #decrement i counter
+# ld $24, r7              
+# add r7, r1              #increment outer pointer to be next student
+br oloop                #return to outer loop
+iloopbody:
+ld 20(r0), r5           #r5 = average of student[j]
+ld 44(r0), r4           #r4 = average of student[j+1]
+not r4
+inc r4
+add r5, r4
+bgt r4, succ
+br iincrement
+succ:                   #swap
+ld 0(r0), r5            # student[j] sid     
+ld 24(r0), r7            #r7 (temp) = students[j+1] sid
+st r5, 24(r0)           # students[j+1] sid = students[j] sid
+st r7, 0(r0)            # students[j] sid = temp
+
+ld 4(r0), r5            # student[j] sid   
+ld 28(r0), r7             #r7 (temp) = students[j+1] sid
+st r5, 28(r0)           # students[j+1] sid = students[j] sid
+st r7, 4(r0)            # students[j] sid = temp
+
+ld 8(r0), r5            # student[j] sid   
+ld 32(r0), r7             #r7 (temp) = students[j+1] sid
+st r5, 32(r0)           # students[j+1] sid = students[j] sid
+st r7, 8(r0)            # students[j] sid = temp
+
+ld 12(r0), r5            # student[j] sid   
+ld 36(r0), r7             #r7 (temp) = students[j+1] sid
+st r5, 36(r0)           # students[j+1] sid = students[j] sid
+st r7, 12(r0)            # students[j] sid = temp
+
+ld 16(r0), r5            # student[j] sid   
+ld 40(r0), r7             #r7 (temp) = students[j+1] sid
+st r5, 40(r0)           # students[j+1] sid = students[j] sid
+st r7, 16(r0)            # students[j] sid = temp
+
+ld 20(r0), r5            # student[j] sid   
+ld 44(r0), r7           #r7 (temp) = students[j+1]
+st r5, 44(r0)           # students[j+1] = students[j]
+st r7, 20(r0)           # students[j] = temp
+iincrement:
+inc r3                  #j++
+ld $24, r7              # r7 = size of student
+add r7, r0              #increment student pointer to point at next
+br iloop                #loop back
+
+findmedian:
+ld $n, r0
+ld (r0), r0
+shr $1, r0
+ld $s, r1
+ld (r1), r1
+
+#while loop to increment pointer to until middle
+
+whileloop:
+bgt r0, whilebody
+ld $m, r0
+ld 0(r1), r1
+st r1, (r0)
+halt
+whilebody:
+ld $24, r2
+add r2, r1
+dec r0
+br whileloop
+
+
+
+.pos 0x1000
+n:      .long 7       # just one student
+m:      .long 0       # put the answer here
+s:      .long base    # address of the array
+base:   .long 1234    # student ID
+        .long 6      # grade 0
+        .long 6      # grade 1
+        .long 6      # grade 2
+        .long 6      # grade 3
+        .long 0       # computed average     
+
+        .long 1235    # student ID
+        .long 5      # grade 0
+        .long 5      # grade 1
+        .long 5      # grade 2
+        .long 5      # grade 3
+        .long 0       # computed average
+
+        .long 1236    # student ID
+        .long 4      # grade 0
+        .long 4      # grade 1
+        .long 4      # grade 2
+        .long 4      # grade 3
+        .long 0       # computed average     
+
+        .long 1237    # student ID
+        .long 3      # grade 0
+        .long 3      # grade 1
+        .long 3      # grade 2
+        .long 3      # grade 3
+        .long 0       # computed average   
+        .long 1239    # student ID
+        .long 1      # grade 0
+        .long 1      # grade 1
+        .long 1      # grade 2
+        .long 1      # grade 3
+        .long 0       # computed average   
+
+        .long 1238    # student ID
+        .long 2      # grade 0
+        .long 2      # grade 1
+        .long 2      # grade 2
+        .long 2      # grade 3
+        .long 0       # computed average   
+
+        .long 1240    # student ID
+        .long 0      # grade 0
+        .long 0      # grade 1
+        .long 0      # grade 2
+        .long 0      # grade 3
+        .long 0       # computed average   
+
+

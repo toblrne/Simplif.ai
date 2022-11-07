@@ -18,6 +18,7 @@ function App() {
   }, [currentImage]);
 
   useEffect(() => {
+    console.log(currentImage + "hi")
     const getSummary = (fullText) => {
       let data = new FormData();
       data.append('file', currentImage);
@@ -31,7 +32,6 @@ function App() {
       })
       .then(function(response) {
         setSummary(response.data);
-        console.log(summary);
       })
       .catch(function(error) {
         console.log(error);
@@ -47,12 +47,17 @@ function App() {
   const getUserImage = (img) => {
     setCurrentImage(img);
   }
-
   return (
     <div className="App">
+    <HomePage />
+    <div class="panell">
+      <a id="introPage">
+        <IntroPage />
+      </a>
       <UploadImagePanel getUserInput={getUserImage}/>
-      <ResultTextPanel />
+      <ResultTextPanel result={summary} />
     </div>
+  </div>
   );
 }
 
