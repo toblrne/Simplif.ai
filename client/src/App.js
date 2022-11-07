@@ -14,10 +14,7 @@ function App() {
   const [summary, setSummary] = useState("");
 
   useEffect(() => {
-    console.log(currentImage)
-  }, [currentImage]);
-
-  useEffect(() => {
+    console.log(currentImage + "hi")
     const getSummary = (fullText) => {
       let data = new FormData();
       data.append('file', currentImage);
@@ -30,8 +27,8 @@ function App() {
         }
       })
       .then(function(response) {
+        console.log('her'+ response.data)
         setSummary(response.data);
-        console.log(summary);
       })
       .catch(function(error) {
         console.log(error);
@@ -49,9 +46,15 @@ function App() {
   }
   return (
     <div className="App">
+    <HomePage />
+    <div class="panell">
+      <a id="introPage">
+        <IntroPage />
+      </a>
       <UploadImagePanel getUserInput={getUserImage}/>
-      <ResultTextPanel />
+      <ResultTextPanel result={summary} />
     </div>
+  </div>
   );
 }
 

@@ -20,6 +20,9 @@
 }
 
 .textPanel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 300px;
   width: 550px;
   background-color: #e4eedd;

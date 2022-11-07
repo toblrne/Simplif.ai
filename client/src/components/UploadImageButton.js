@@ -14,7 +14,7 @@ export default function UploadImageButton({ getUserInput }) {
 
   return (
     <div className="uploadButton">
-      <input type="file" id="actual_button" />
+      <input type="file" id="actual_button" onChange={changeHandler} hidden/>
       <label for="actual_button" className="uploadButton">
         <img src={uploadIcon} />
         <p>Select file from your computer</p>

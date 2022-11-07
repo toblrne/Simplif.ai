@@ -22,21 +22,23 @@ app.post("/getdata", upload.single('file'), async (req, res) => {
     
         textArray = labels.map(label => label.description)
         text = textArray[0]
-    
-        const client = new NLPCloudClient('bart-large-cnn','92618546913670c8dd7b61517096d4af64fca6d5')
+
+
+        const client = new NLPCloudClient('bart-large-cnn','a488755630386d1a8ace26771c7965e37eba6970')
         // Returns an Axios promise with the results.
         // In case of success, results are contained in `response.data`. 
         // In case of failure, you can retrieve the status code in `err.response.status` 
         // and the error message in `err.response.data.detail`.
         client.summarization(text).then(function (response) {
-        console.log(response.data);
+            console.log(response.data);
+            text = response.data.summary_text;
+        }).then(() => {
+            res.send(text);
         })
         .catch(function (err) {
             console.error(err.response.status);
             console.error(err.response.data.detail);
-        }) 
-        res.send(text);
-})
+        });
+    })
 
 app.listen(5000, '127.0.0.01', () => console.log('Server Running!'));
-
