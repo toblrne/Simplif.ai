@@ -1,4 +1,5 @@
 # Simplif.ai
+## Ryan Gao, Allan Tan, Emily Chan, Jack Wang
 
 
 ## The Problem
