@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles.css";
+import "../panelStyles.css";
 import UploadImageButton from "./UploadImageButton";
 
 export default function UploadImagePanel({ getUserInput }) {

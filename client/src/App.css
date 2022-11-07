@@ -1,0 +1,16 @@
+.App {
+  display: flex;
+  flex-direction: column;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.panell {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

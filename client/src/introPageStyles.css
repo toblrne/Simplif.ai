@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap");
+
+.introPage {
+  font-family: "Rubik", sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.introPage > img {
+  height: 50%;
+  width: 37%;
+  padding-top: 70px;
+  padding-bottom: 30px;
+}
+
+.introPanel {
+  width: 600px;
+  height: 380px;
+  background-color: #97c1a8;
+  border-radius: 30px;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.introPanel > h2 {
+  margin-top: 50px;
+  width: 50%;
+}
+
+.desc {
+  font-weight: 400;
+  font-size: 14px;
+  margin-top: 15px;
+  width: 275px;
+}
+
+.imageUpload {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 10px;
+  margin-top: 15px;
+}
+
+.imageUpload > img {
+  height: 60px;
+  width: 60px;
+}
+
+.imageUpload--button {
+  background-color: #ddecd2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 20px;
+  margin-left: 10px;
+}
+
+.imageUpload--button > h2 {
+  font-size: 17px;
+  padding: 10px;
+}
+
+.imageUpload--button:hover {
+  cursor: pointer;
+  background-color: #e4eedd;
+  transition: 0.2s;
+}
+
+.pasteText {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 10px;
+}
+
+.pasteText > img {
+  height: 55px;
+  width: 55px;
+}
+
+.pasteText--button {
+  background-color: #ddecd2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 20px;
+  margin-left: 10px;
+  width: 130px;
+  margin-left: 15px;
+}
+
+.pasteText--button > h2 {
+  font-size: 17px;
+  padding: 10px;
+}
+
+.pasteText--button:hover {
+  cursor: pointer;
+  background-color: #e4eedd;
+  transition: 0.2s;
+}

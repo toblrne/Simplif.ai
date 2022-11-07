@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap");
+
+.resultTextPanel {
+  margin-top: 80px;
+  height: 380px;
+  width: 600px;
+  background-color: #97c1a8;
+  box-shadow: 0px 0px 20px #9aada1;
+  border-radius: 30px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.resultTextPanel > p {
+  font-family: "Rubik", sans-serif;
+  font-size: 15px;
+  font-weight: 550;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.textPanel {
+  height: 300px;
+  width: 550px;
+  background-color: #e4eedd;
+  border-radius: 30px;
+  margin-left: 25px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.textPanel > p {
+  font-family: "Rubik", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 20px;
+}

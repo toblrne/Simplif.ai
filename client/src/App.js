@@ -1,11 +1,13 @@
-import "./styles.css";
+import "./App.css";
 import UploadImagePanel from "./components/UploadImagePanel";
 import ResultTextPanel from "./components/ResultTextPanel";
+import HomePage from "./components/HomePage";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
 import { db } from "./firebase-config";
 import { collection, getDocs } from "@firebase/firestore";
+import IntroPage from "./components/IntroPage";
 
 function App() {
   const [currentImage, setCurrentImage] = useState(null);
