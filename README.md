@@ -2,6 +2,7 @@
 ### Submitted to HackCamp 2022
 ### Ryan Gao, Allan Tan, Emily Chan, Jack Wang
 
+https://devpost.com/software/simplif-ai-n4u3sr
 
 ### The Problem
 When reading school textbooks or news articles online, a major issue that arises is the unnecessary amount of text that is required to explain an extremely simple concept.
